@@ -1,0 +1,101 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+
+int main() {
+
+    int choice, quantity;
+    char more;
+
+    double total = 0;
+
+    do {
+
+        cout << "\n========== WELCOME TO CAFE ==========" << endl;
+
+        cout << "1. Coffee        - Rs.80" << endl;
+        cout << "2. Cappuccino    - Rs.120" << endl;
+        cout << "3. Sandwich      - Rs.150" << endl;
+        cout << "4. Burger        - Rs.180" << endl;
+        cout << "5. French Fries  - Rs.100" << endl;
+        cout << "6. Cold Coffee   - Rs.140" << endl;
+        cout << "7. Pastry        - Rs.90" << endl;
+
+        cout << "\nEnter Item Number: ";
+        cin >> choice;
+
+        cout << "Enter Quantity: ";
+        cin >> quantity;
+
+        switch(choice) {
+
+            case 1:
+                total += 80 * quantity;
+                cout << "Coffee Added!" << endl;
+                break;
+
+            case 2:
+                total += 120 * quantity;
+                cout << "Cappuccino Added!" << endl;
+                break;
+
+            case 3:
+                total += 150 * quantity;
+                cout << "Sandwich Added!" << endl;
+                break;
+
+            case 4:
+                total += 180 * quantity;
+                cout << "Burger Added!" << endl;
+                break;
+
+            case 5:
+                total += 100 * quantity;
+                cout << "French Fries Added!" << endl;
+                break;
+
+            case 6:
+                total += 140 * quantity;
+                cout << "Cold Coffee Added!" << endl;
+                break;
+
+            case 7:
+                total += 90 * quantity;
+                cout << "Pastry Added!" << endl;
+                break;
+
+            default:
+                cout << "Invalid Choice!" << endl;
+        }
+
+        cout << "\nDo You Want To Order More? (y/n): ";
+        cin >> more;
+
+    } while(more == 'y' || more == 'Y');
+
+    double tax = total * 0.05;
+    double finalBill = total + tax;
+
+    cout << fixed << setprecision(2);
+
+    cout << "\n========== FINAL BILL ==========" << endl;
+
+    cout << "Food Total : Rs. " << total << endl;
+    cout << "GST (5%)   : Rs. " << tax << endl;
+    cout << "Final Bill : Rs. " << finalBill << endl;
+
+    if(finalBill > 1000) {
+
+        double discount = finalBill * 0.10;
+
+        cout << "Discount   : Rs. " << discount << endl;
+
+        finalBill -= discount;
+
+        cout << "After Discount : Rs. " << finalBill << endl;
+    }
+
+    cout << "\nThank You For Visiting Our Cafe!" << endl;
+
+    return 0;
+}
