@@ -1,0 +1,72 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    string movies[3] = {
+        "Avengers",
+        "Interstellar",
+        "Joker"
+    };
+
+    int seats[3] = {50, 50, 50};
+
+    int choice;
+    int tickets;
+    int total;
+
+    do {
+
+        cout << "\n===== MOVIE TICKET BOOKING SYSTEM =====" << endl;
+
+        cout << "1. Avengers" << endl;
+        cout << "2. Interstellar" << endl;
+        cout << "3. Joker" << endl;
+        cout << "4. Exit" << endl;
+
+        cout << "\nAvailable Seats:" << endl;
+
+        for(int i = 0; i < 3; i++) {
+
+            cout << movies[i]
+                 << " : "
+                 << seats[i]
+                 << " seats available"
+                 << endl;
+        }
+
+        cout << "\nEnter Movie Choice: ";
+        cin >> choice;
+
+        if(choice >= 1 && choice <= 3) {
+
+            cout << "Enter Number Of Tickets: ";
+            cin >> tickets;
+
+            if(tickets <= seats[choice - 1]) {
+
+                seats[choice - 1] -= tickets;
+
+                total = tickets * 200;
+
+                cout << "\nBooking Successful!" << endl;
+
+                cout << "Movie : "
+                     << movies[choice - 1]
+                     << endl;
+
+                cout << "Tickets : "
+                     << tickets
+                     << endl;
+
+                cout << "Total Amount : Rs. "
+                     << total
+                     << endl;
+            }
+            else {
+
+                cout << "Not Enough Seats Available!" << endl;
+            }
+        }
+
+        else if(choice ==
