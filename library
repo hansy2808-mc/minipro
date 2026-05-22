@@ -1,0 +1,98 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    string books[5] = {
+        "C++ Programming",
+        "Data Structures",
+        "Python Basics",
+        "Operating Systems",
+        "DBMS"
+    };
+
+    bool issued[5] = {false, false, false, false, false};
+
+    int choice;
+    int bookNumber;
+
+    do {
+
+        cout << "\n===== LIBRARY MANAGEMENT SYSTEM =====" << endl;
+
+        cout << "1. Display Books" << endl;
+        cout << "2. Issue Book" << endl;
+        cout << "3. Return Book" << endl;
+        cout << "4. Exit" << endl;
+
+        cout << "Enter Choice: ";
+        cin >> choice;
+
+        switch(choice) {
+
+            case 1:
+
+                cout << "\n===== BOOK LIST =====" << endl;
+
+                for(int i = 0; i < 5; i++) {
+
+                    cout << i + 1 << ". " << books[i];
+
+                    if(issued[i])
+                        cout << " (Issued)";
+                    else
+                        cout << " (Available)";
+
+                    cout << endl;
+                }
+
+                break;
+
+            case 2:
+
+                cout << "Enter Book Number to Issue: ";
+                cin >> bookNumber;
+
+                if(bookNumber < 1 || bookNumber > 5) {
+                    cout << "Invalid Book Number!" << endl;
+                }
+                else if(issued[bookNumber - 1]) {
+                    cout << "Book Already Issued!" << endl;
+                }
+                else {
+                    issued[bookNumber - 1] = true;
+                    cout << "Book Issued Successfully!" << endl;
+                }
+
+                break;
+
+            case 3:
+
+                cout << "Enter Book Number to Return: ";
+                cin >> bookNumber;
+
+                if(bookNumber < 1 || bookNumber > 5) {
+                    cout << "Invalid Book Number!" << endl;
+                }
+                else if(!issued[bookNumber - 1]) {
+                    cout << "Book Was Not Issued!" << endl;
+                }
+                else {
+                    issued[bookNumber - 1] = false;
+                    cout << "Book Returned Successfully!" << endl;
+                }
+
+                break;
+
+            case 4:
+                cout << "Exiting Program..." << endl;
+                break;
+
+            default:
+                cout << "Invalid Choice!" << endl;
+        }
+
+    } while(choice != 4);
+
+    return 0;
+}
