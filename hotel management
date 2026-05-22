@@ -1,0 +1,117 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    int rooms[5] = {0, 0, 0, 0, 0};
+
+    string customer[5];
+
+    int choice;
+    int room;
+    int days;
+
+    do {
+
+        cout << "\n===== HOTEL MANAGEMENT SYSTEM =====" << endl;
+
+        cout << "1. View Rooms" << endl;
+        cout << "2. Book Room" << endl;
+        cout << "3. Checkout Room" << endl;
+        cout << "4. Exit" << endl;
+
+        cout << "Enter Choice: ";
+        cin >> choice;
+
+        switch(choice) {
+
+            case 1:
+
+                cout << "\n===== ROOM STATUS =====" << endl;
+
+                for(int i = 0; i < 5; i++) {
+
+                    cout << "Room " << i + 1 << " : ";
+
+                    if(rooms[i] == 0)
+                        cout << "Available";
+                    else
+                        cout << "Booked by " << customer[i];
+
+                    cout << endl;
+                }
+
+                break;
+
+            case 2:
+
+                cout << "Enter Room Number (1-5): ";
+                cin >> room;
+
+                if(room < 1 || room > 5) {
+
+                    cout << "Invalid Room Number!" << endl;
+                }
+                else if(rooms[room - 1] == 1) {
+
+                    cout << "Room Already Booked!" << endl;
+                }
+                else {
+
+                    cout << "Enter Customer Name: ";
+                    cin >> customer[room - 1];
+
+                    rooms[room - 1] = 1;
+
+                    cout << "Room Booked Successfully!" << endl;
+                }
+
+                break;
+
+            case 3:
+
+                cout << "Enter Room Number for Checkout: ";
+                cin >> room;
+
+                if(room < 1 || room > 5) {
+
+                    cout << "Invalid Room Number!" << endl;
+                }
+                else if(rooms[room - 1] == 0) {
+
+                    cout << "Room Already Empty!" << endl;
+                }
+                else {
+
+                    cout << "Enter Number of Days Stayed: ";
+                    cin >> days;
+
+                    int bill = days * 2000;
+
+                    cout << "\n===== BILL =====" << endl;
+                    cout << "Customer Name : " << customer[room - 1] << endl;
+                    cout << "Days Stayed   : " << days << endl;
+                    cout << "Total Bill    : Rs. " << bill << endl;
+
+                    rooms[room - 1] = 0;
+                    customer[room - 1] = "";
+
+                    cout << "Checkout Successful!" << endl;
+                }
+
+                break;
+
+            case 4:
+
+                cout << "Exiting Hotel System..." << endl;
+                break;
+
+            default:
+
+                cout << "Invalid Choice!" << endl;
+        }
+
+    } while(choice != 4);
+
+    return 0;
+}
