@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    string name;
+    int pin;
+    double balance = 10000;
+    int choice;
+    double amount;
+
+    cout << "===== BANK MANAGEMENT SYSTEM =====" << endl;
+
+    cout << "Enter Your Name: ";
+    cin >> name;
+
+    cout << "Set 4-digit PIN: ";
+    cin >> pin;
+
+    int enteredPin;
+
+    cout << "\nEnter PIN to Login: ";
+    cin >> enteredPin;
+
+    if(enteredPin != pin) {
+        cout << "Incorrect PIN!";
+        return 0;
+    }
+
+    do {
+
+        cout << "\n===== MENU =====" << endl;
+        cout << "1. Check Balance" << endl;
+        cout << "2. Deposit Money" << endl;
+        cout << "3. Withdraw Money" << endl;
+        cout << "4. Account Details" << endl;
+        cout << "5. Exit" << endl;
+
+        cout << "Enter Choice: ";
+        cin >> choice;
+
+        switch(choice) {
+
+            case 1:
+                cout << "Current Balance: Rs. " << balance << endl;
+                break;
+
+            case 2:
+                cout << "Enter Amount to Deposit: ";
+                cin >> amount;
+
+                balance += amount;
+
+                cout << "Money Deposited Successfully!" << endl;
+                cout << "Updated Balance: Rs. " << balance << endl;
+                break;
+
+            case 3:
+                cout << "Enter Amount to Withdraw: ";
+                cin >> amount;
+
+                if(amount > balance) {
+                    cout << "Insufficient Balance!" << endl;
+                }
+                else {
+                    balance -= amount;
+
+                    cout << "Withdrawal Successful!" << endl;
+                    cout << "Remaining Balance: Rs. " << balance << endl;
+                }
+
+                break;
+
+            case 4:
+                cout << "\n===== ACCOUNT DETAILS =====" << endl;
+                cout << "Account Holder: " << name << endl;
+                cout << "Balance: Rs. " << balance << endl;
+                break;
+
+            case 5:
+                cout << "Thank You For Using Our Bank!" << endl;
+                break;
+
+            default:
+                cout << "Invalid Choice!" << endl;
+        }
+
+    } while(choice != 5);
+
+    return 0;
+}
