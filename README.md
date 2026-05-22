@@ -10,6 +10,7 @@ This repository contains beginner-friendly C++ projects.
 - Cafe Ordering System
 - Restaurant Billing System
 - Grading System
+- Movie Booking System
 
 ## Language Used
 - C++
